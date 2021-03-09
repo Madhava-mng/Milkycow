@@ -1,0 +1,10 @@
+README.md
+setup.py
+milkycow/__init__.py
+milkycow/decrypt.py
+milkycow/encrypt.py
+milkycow.egg-info/PKG-INFO
+milkycow.egg-info/SOURCES.txt
+milkycow.egg-info/dependency_links.txt
+milkycow.egg-info/requires.txt
+milkycow.egg-info/top_level.txt

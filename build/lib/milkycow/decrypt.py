@@ -1,25 +1,34 @@
-from random import randint as rint
-from random import choice
-from codelib.base import base64decode as b_dec
-from codelib.base import base64encode as b_enc
-from codelib.rot import *
+from hashlib import sha1
+from random import randint, choice
 
-def dec(string, password = "foo bar moooo", rotate=50,  layer = 0, rfs=6):
+def dec(string, passwd='pass ', rotate=500):
     try:
-        string = b_dec(rot47IterBackword(string, rfs))
+        passwd = sha1((str(passwd)+"#@").encode()).hexdigest()
+        pas = 0
+        mkvsp = 1
+        tmp = ""
+        mkstr = string[14:-6]
+
+        for i in range(1, 11):
+            if(rotate%i == 0):
+                mkvsp = i
+
+        for i in passwd:
+            if(i.isdigit()):
+                if(i == mkvsp):
+                    continue
+                pas += ord(i)
+            else:
+                pas -= ord(i)
+            while(pas <= 0):
+                pas += len(passwd)+ord(i)
+
+        for i in range(len(mkstr)):
+            if(i%(mkvsp+1) == 0):
+                tmp += chr(ord(mkstr[i])-rotate-pas)
+
     except:
-        pass
-    tmp = ""
-    tmp_key = 0
-    try:
-        if(layer >=  0):
-            for x in bytearray(password.encode()):
-                tmp_key += x
-            for i in string[18:-25]:
-                tmp += chr(ord(i) - (rotate + tmp_key))
-            return dec(tmp, password, rotate, layer-1, rfs)
-        return string
-    except KeyboardInterrupt:
-        return "Mlikeycow :: interrupt :: form keyboard"
-    except:
-        return "Milkeycow :: bad crid :: unable to process"
+        tmp = "".join([chr(randint(95, 123)) for x in range(len(str(string))+randint(1,20))])
+    return tmp
+
+

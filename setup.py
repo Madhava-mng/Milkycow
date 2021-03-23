@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="milkycow", # Replace with your own username
-    version="0.0.1",
+    version="0.0.5",
     author="Madhava-mng",
     author_email="alformint@gmail.com",
     description="Simple encryption",
@@ -18,5 +18,4 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-    install_requires = ["codelib"]
 )

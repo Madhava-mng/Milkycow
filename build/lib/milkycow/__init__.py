@@ -1,18 +1,18 @@
 
-__doc__ = """MILKY COW SIMPLE ENCRYPTION
+__doc__ = """MILKYCOW SIMPLE ENCRYPTION
 
 
 ENCRYPT:
     >>> import milkycow as mc
     >>> enc1 = mc.encrypt("hello 1", "pass")
-    >>> enc2 = mc.encrypt("hello 2", "password", rotate=100, layer=1, 3)
+    >>> enc2 = mc.encrypt("hello 2", "password", rotate=100)
 
 
 DECRYPT:
     >>> dec1 = mc.decrypt(enc1, "pass")
     >>> print(dec1)
     hello 1
-    >>> dec2 = mc.decrypt(enc2, "password", 100, 1, 3)
+    >>> dec2 = mc.decrypt(enc2, "password", 100)
     >>> print(dec1)
     hello 2
 
